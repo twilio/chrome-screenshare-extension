@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Screen Share API demo</title>
+</head>
+<body>
+  <video id="screen" autoplay></video>
+  <script type="text/javascript" src="../build/twilio-screenshare.js"></script>
+  <script type="text/javascript">
+    Twilio.requestUserScreen('adcflopogfjeicmomklehicoolclpndb', {
+      maxWidth: 1024, maxHeight: 968
+    }).then(function(stream) {
+      document.getElementById('screen').srcObject = stream;
+    });
+  </script>
+</body>
+</html>

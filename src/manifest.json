@@ -1,0 +1,17 @@
+{
+  "manifest_version": 2,
+  "version": "{{version}}",
+  "name": "{{name}}",
+  "description": "{{description}}",
+  "icons": {},
+  "background": {
+    "scripts": [ "background.js" ]
+  },
+  "externally_connectable": {
+    "matches": [ "{{proto}}://{{domain}}/*" ]
+  },
+  "permissions": [
+    "desktopCapture",
+    "tabs"
+  ]
+}
