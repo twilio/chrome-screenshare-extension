@@ -3,7 +3,9 @@
   "version": "{{version}}",
   "name": "{{name}}",
   "description": "{{description}}",
-  "icons": {},
+  "icons": {
+    "128": "icon.png"
+  },
   "background": {
     "scripts": [ "background.js" ]
   },

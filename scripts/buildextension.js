@@ -5,8 +5,9 @@ const handlebars = require('handlebars');
 const manifest = require('../src/manifest.json');
 const package = require('../package.json');
 
-const domain = process.argv[3];
-const proto = process.argv[2];
+const env = process.argv[2];
+const config = require(`./config.${env}.json`);
+const version = env === 'dev' ? package.version.split('-')[0] : package.version;
 
 function writeToFile(path, text) {
   return new Promise((resolve, reject) => {
@@ -23,13 +24,8 @@ function buildExtensionSource() {
 
 function buildExtensionManifest() {
   var manifestTemplate = handlebars.compile(JSON.stringify(manifest, null, 2), { noEscape: true });
-  return writeToFile('./build/extension/manifest.json', manifestTemplate({
-    name: package.name,
-    description: package.description,
-    version: package.version,
-    domain: domain,
-    proto: proto
-  }));
+  return writeToFile('./build/extension/manifest.json',
+    manifestTemplate(Object.assign({ version: version }, config)));
 }
 
 buildExtensionManifest().then(buildExtensionSource, err => console.error(err));

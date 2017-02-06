@@ -1,12 +1,14 @@
 {
   "name": "chrome-screenshare-extension",
-  "version": "0.0.1",
+  "version": "1.0.0-dev",
   "description": "Twilio's own screenshare extension.",
   "main": "index.js",
   "scripts": {
     "clean": "rm -rf build",
     "build:api": "mkdir -p build && node scripts/buildapi.js",
-    "build:extension": "mkdir -p build/extension && node scripts/buildextension.js http localhost"
+    "build:extension": "mkdir -p build/extension && cp src/icon.png build/extension && node scripts/buildextension.js",
+    "test:server": "python -m SimpleHTTPServer 8080 &",
+    "test:run": "/Applications/Google\\ Chrome.app/Contents/MacOS/Google\\ Chrome http://localhost:8080/test/ --load-extension=build/extension &"
   },
   "repository": {
     "type": "git",

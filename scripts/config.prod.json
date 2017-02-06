@@ -1,0 +1,6 @@
+{
+  "name": "Twilio Screen Sharing Extension",
+  "description": "Add Screen Sharing to your Twilio Video App!",
+  "proto": "https",
+  "domain": "video.bytwilio.com"
+}
