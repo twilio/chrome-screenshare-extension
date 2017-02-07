@@ -1,6 +1,9 @@
-import requestUserScreen from '../modules/requestuserscreen';
+'use strict';
+
+import requestUserScreen from './requestuserscreen';
 
 (function(scope) {
   scope['Twilio'] = scope['Twilio'] || {};
-  scope['Twilio'].requestUserScreen = requestUserScreen;
-})(window);
+  scope['Twilio']['Video'] = scope['Twilio']['Video'] || {};
+  scope['Twilio']['Video'].requestUserScreen = requestUserScreen;
+})(typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : this);

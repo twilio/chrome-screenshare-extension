@@ -1,5 +1,13 @@
+'use strict';
+
 import EventEmitter from 'events';
 
+/**
+ * Listens for screen sharing requests from configured domain.
+ * @class
+ * @extends EventEmitter
+ * @fires Background#screenRequest
+ */
 class Background extends EventEmitter {
   constructor() {
     super();
@@ -16,5 +24,12 @@ class Background extends EventEmitter {
     });
   }
 }
+
+/**
+ * Your {@link Background} has received a new screen sharing request.
+ * @param {*} tab - The tab that sent the request
+ * @param {function} respond - The function to send a response to the tab the sent the request
+ * @event Background#screenRequest
+ */
 
 export default new Background();

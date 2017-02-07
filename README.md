@@ -21,7 +21,7 @@ to build an extension that allows `localhost` apps to communicate with it, there
 
 ```
 # Output will be in ./build/extension
-npm run build:extension -- <dev|prod>
+ENV=dev|prod npm run build:extension
 ```
 
 ## Building the Twilio Screen Sharing API
@@ -36,7 +36,7 @@ The following snipped specifies the API:
  * @param {MediaTrackConstraints} [screenConstraints] - Optional constraints for the user's desktop stream.
  * @returns {Promise<MediaStream>}
  */
-Twilio.requestUserScreen = function requestUserScreen(extensionId, screenConstraints) {};
+Twilio.Video.requestUserScreen = function requestUserScreen(extensionId, screenConstraints) {};
 ```
 
 In order to build the JavaScript API, run
@@ -51,9 +51,8 @@ npm run build:api
 * In order to serve the `localhost` page that tests the extension, run
 
   ```
-  # NOTE: Please kill any previous server that was spawned before running this script.
-  # You can find the process id with this - ps ax | grep SimpleHTTPserver.
-  npm run test:server
+  # NOTE: Please kill any previous server with - npm run test:server:stop
+  npm run test:server:start
   ```
 
 * In order to start the test, run

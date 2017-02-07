@@ -14,7 +14,7 @@
     var requestScreenButton = document.getElementById('requestScreenButton');
     var extensionId = document.getElementById('extensionId');
     requestScreenButton.addEventListener('click', function() {
-      Twilio.requestUserScreen(extensionId.value, {
+      Twilio.Video.requestUserScreen(extensionId.value, {
         maxWidth: 1024, maxHeight: 968
       }).then(function(stream) {
         document.getElementById('screen').srcObject = stream;

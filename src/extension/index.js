@@ -1,5 +1,7 @@
-import background from '../modules/background';
-import getUserScreen from '../modules/getuserscreen';
+'use strict';
+
+import background from './background';
+import getUserScreen from './getuserscreen';
 
 background.on('screenRequest', (tab, respond) => {
   getUserScreen([ 'window', 'screen' ], tab)
