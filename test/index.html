@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Screen Share API demo</title>
+</head>
+<body>
+  <label>Extension ID:</label><br>
+  <input id="extensionId" type="text">
+  <button id="requestScreenButton">Request User Screen</button><br>
+  <video id="screen" autoplay></video>
+  <script type="text/javascript" src="../build/twilio-screenshare.js"></script>
+  <script type="text/javascript">
+    var requestScreenButton = document.getElementById('requestScreenButton');
+    var extensionId = document.getElementById('extensionId');
+    requestScreenButton.addEventListener('click', function() {
+      Twilio.Video.requestUserScreen(extensionId.value, {
+        maxWidth: 1024, maxHeight: 968
+      }).then(function(stream) {
+        document.getElementById('screen').srcObject = stream;
+      });
+    });
+  </script>
+</body>
+</html>
