@@ -12,15 +12,20 @@ class Background extends EventEmitter {
   constructor() {
     super();
     chrome.runtime.onMessageExternal.addListener((message, sender, sendResponse) => {
-      switch (message.type) {
-        case 'requestUserScreen':
-          this.emit('screenRequest', sender.tab, sendResponse);
-          break;
-        default:
-          sendResponse({ type: 'failed', payload: { code: 'BAD_REQUEST' } });
-          break;
+      // NOTE: Since the message format is just a prototype, it doesn't
+      // have a version yet. Once the message format and fields are formalized,
+      // a 'version' field will be present.
+      if (!message.hasOwnProperty('version')) {
+        switch (message.type) {
+          case 'requestUserScreen':
+            this.emit('screenRequest', sender.tab, sendResponse);
+            break;
+          default:
+            sendResponse({ type: 'failed', payload: { code: 'BAD_REQUEST' } });
+            break;
+        }
+        return true;
       }
-      return true;
     });
   }
 }
